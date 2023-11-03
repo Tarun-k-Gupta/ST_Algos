@@ -1,17 +1,34 @@
+# ---
+# - name: Pull Docker Image of Calculator
+#   hosts: all
+#   vars:
+#     ansible_python_interpreter: /usr/bin/python3
+#   tasks:
+#       - name: Pull image
+#         shell: pip install docker
+#         docker_image:
+#           name: tarun0127/calculator:latest
+#           source: pull
+#       # - name: Start docker service
+#       #   service:
+#       #     name: docker
+#       #     state: started
+#       - name: Running container
+#         shell: docker run -it -d --name Calculator tarun0127/calculator
+
 ---
 - name: Pull Docker Image of Calculator
-  hosts: all
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
+  hosts: localhost
   tasks:
-      - name: Pull image
-        shell: pip install docker
-        docker_image:
-          name: tarun0127/calculator:latest
-          source: pull
-      # - name: Start docker service
-      #   service:
-      #     name: docker
-      #     state: started
-      - name: Running container
-        shell: docker run -it -d --name Calculator tarun0127/calculator
+    - name: Pull image
+      docker_image:
+        name: tarun0127/calculator:latest
+        source: pull
+    - name: Start docker service
+      service:
+        name: docker
+        state: started
+      when: ansible_facts['os_family'] == "Debian"
+    - name: Running container
+      shell: /usr/bin/docker run -it -d tarun0127/calculator:latest
+
