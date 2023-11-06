@@ -26,7 +26,7 @@
     - name: Pull image
       shell: docker pull tarun0127/calculator:latest
     - name: Running container
-      shell: docker run -it -d --name calculator mukul1357/calculator:latest
+      shell: docker run -it -d --name calculator tarun0127/calculator:latest
   # handlers:
   #     - name: Restart Docker Service
   #       service:
