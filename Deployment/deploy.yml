@@ -5,30 +5,45 @@
 #     ansible_python_interpreter: /usr/bin/python3
 #   tasks:
 #       - name: Pull image
-#         shell: pip install docker
+#         # shell: pip install docker
 #         docker_image:
 #           name: tarun0127/calculator:latest
 #           source: pull
-#       # - name: Start docker service
-#       #   service:
-#       #     name: docker
-#       #     state: started
+#         # notify: Restart Docker Service
+#       - name: Start docker service
+#         service:
+#           name: docker
+#           state: started
 #       - name: Running container
-#         shell: docker run -it -d --name Calculator tarun0127/calculator
+#         shell: /usr/bin/docker run -it -d --name Calculator tarun0127/calculator
 
 ---
-- name: Pull Docker Image of Calculator
-  hosts: localhost
+- name: Pull Docker image of Calculator
+  hosts: all
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Pull image
-      docker_image:
-        name: tarun0127/calculator:latest
-        source: pull
-    - name: Start docker service
-      service:
-        name: docker
-        state: started
-      when: ansible_facts['os_family'] == "Debian"
+      shell: docker pull tarun0127/calculator:latest
     - name: Running container
-      shell: /usr/bin/docker run -it -d tarun0127/calculator:latest
-
+      shell: docker run -it -d --name calculator mukul1357/calculator:latest
+  # handlers:
+  #     - name: Restart Docker Service
+  #       service:
+  #         name: docker
+  #         state: restarted
+# ---
+# - name: Pull Docker Image of Calculator
+#   hosts: localhost
+#   tasks:
+#     - name: Pull image
+#       docker_image:
+#         name: tarun0127/calculator:latest
+#         source: pull
+#     - name: Start docker service
+#       service:
+#         name: docker
+#         state: started
+#       when: ansible_facts['os_family'] == "Debian"
+#     - name: Running container
+#       shell: /usr/bin/docker run -it -d tarun0127/calculator:latest
