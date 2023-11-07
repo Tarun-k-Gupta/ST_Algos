@@ -1,189 +1,91 @@
 package com.example;
 
-// /**
-//  * Hello world!
-//  *
-//  */
-// public class Main 
-// {
-//     public static void main( String[] args )
-//     {
-//         System.out.println( "Hello World!" );
-//     }
-// }
-
-// package org.cal;
-
-// import java.util.Scanner;
-// import org.apache.logging.log4j.LogManager;
-// import org.apache.logging.log4j.Logger;
-
-// public class Main {
-//     private static final Logger logger = LogManager.getLogger(Main.class);
-
-//     public static void main(String[] args) {
-//         System.out.println("Enter a number to start the program");
-//         Scanner sc = new Scanner(System.in);
-//         sc.nextLine();
-//         while (true) {
-//             System.out.println("**********************************CALCULATOR**********************************");
-//             System.out.println("What do you want to do ?");
-//             System.out.println("1.Square root \n2.Factorial  \n3.Natural Log \n4.Power \nAny other integer to Quit");
-//             System.out.print("\n Enter your choice : ");
-//             int ch = sc.nextInt();
-//             double res = 0;
-//             double num, pow;
-//             switch (ch) {
-//                 case (1): // SquareRoot
-//                     System.out.print("Enter no : ");
-//                     num = sc.nextDouble();
-//                     res = squareroot(num);
-//                     break; // Factorial
-//                 case (2):
-//                     do {
-//                         System.out.print("Enter no : ");
-//                         num = (int) sc.nextDouble();
-//                         if (num < 0)
-//                             System.out.println("Please enter a positive no. !!!");
-//                     } while (num < 0);
-//                     res = factorial(num);
-//                     break;
-//                 case (3): // Natural Log
-//                     System.out.print("Enter no : ");
-//                     num = sc.nextDouble();
-//                     res = log(num);
-//                     break;
-//                 case (4): // Power
-//                     System.out.print("Enter no : ");
-//                     num = sc.nextDouble();
-//                     System.out.print("Enter power : ");
-//                     pow = sc.nextDouble();
-//                     res = power(num, pow);
-//                     break;
-//                 default:
-//                     System.out.println("Closing the application");
-//                     return;
-//             }
-//             System.out.println("Result : " + res);
-//         }
-//     }
-
-//     public static double squareroot(double n) {
-//         logger.info("[SQ ROOT] - " + n);
-//         double res = Math.sqrt(n);
-//         logger.info("[RESULT - SQ ROOT] - " + res);
-//         return res;
-//     }
-
-//     public static double factorial(double n) {
-//         logger.info("[FACTORIAL] - " + n);
-//         double res = 1L;
-//         for (int i = 1; i <= n; i++) {
-//             res *= i;
-//         }
-//         logger.info("[RESULT - FACTORIAL] - " + res);
-//         return res;
-//     }
-
-//     public static double log(double n) {
-//         logger.info("[NATURAL LOG] - " + n);
-//         double res = Math.log(n);
-//         logger.info("[RESULT - NATURAL LOG] - " + res);
-//         return res;
-//     }
-
-//     public static double power(double n, double p) {
-//         logger.info("[POWER - " + n + " RAISED TO] " + p);
-//         double res = Math.pow(n, p);
-//         logger.info("[RESULT - POWER] - " + res);
-//         return res;
-//     }
-// }
-
-// package org.cal;
-
 import java.util.Scanner;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 
 public class Main {
     private static final Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
-        System.out.println("Enter a number to start the program");
-        Scanner sc = new Scanner(System.in);
-        sc.nextLine();
+        // System.out.println("Enter a number to start the calculator program");
+        Scanner inputScanner = new Scanner(System.in);
+        // inputScanner.nextLine();
         while (true) {
-            System.out.println("**********************************CALCULATOR**********************************");
             System.out.println("Welcome to the calculator program!!");
-            System.out.println("1.Square root \n2.Factorial  \n3.Natural Log \n4.Power \nAny other integer to Quit");
-            System.out.print("\n Enter your choice : ");
-            int ch = sc.nextInt();
-            double res = 0;
-            double num, pow;
-            switch (ch) {
-                case (1): // SquareRoot
-                    System.out.print("Enter no : ");
-                    num = sc.nextDouble();
-                    res = squareroot(num);
-                    break; // Factorial
-                case (2):
+            System.out.println("1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\n Press any other key to Quit");
+            System.out.print("\nEnter your choice: ");
+            int choice = inputScanner.nextInt();
+            double result = 0;
+            double num1, num2;
+            switch (choice) {
+                case 1: // Adding two numbers
+                    System.out.print("Enter the first number: ");
+                    num1 = inputScanner.nextDouble();
+                    System.out.print("Enter the second number: ");
+                    num2 = inputScanner.nextDouble();
+                    result = add(num1, num2);
+                    break;
+                case 2: // Subtraction of two numbers
+                    System.out.print("Enter the first number: ");
+                    num1 = inputScanner.nextDouble();
+                    System.out.print("Enter the second number: ");
+                    num2 = inputScanner.nextDouble();
+                    result = subtract(num1, num2);
+                    break;
+                case 3: // Multiplication of two numbers
+                    System.out.print("Enter the first number: ");
+                    num1 = inputScanner.nextDouble();
+                    System.out.print("Enter the second number: ");
+                    num2 = inputScanner.nextDouble();
+                    result = multiply(num1, num2);
+                    break;
+                case 4: // Division of two numbers
+                    System.out.print("Enter the numerator: ");
+                    num1 = inputScanner.nextDouble();
                     do {
-                        System.out.print("Enter no : ");
-                        num = (int) sc.nextDouble();
-                        if (num < 0)
-                            System.out.println("Please enter a positive no. !!!");
-                    } while (num < 0);
-                    res = factorial(num);
-                    break;
-                case (3): // Natural Log
-                    System.out.print("Enter no : ");
-                    num = sc.nextDouble();
-                    res = log(num);
-                    break;
-                case (4): // Power
-                    System.out.print("Enter no : ");
-                    num = sc.nextDouble();
-                    System.out.print("Enter power : ");
-                    pow = sc.nextDouble();
-                    res = power(num, pow);
+                        System.out.print("Enter the denominator (non-zero): ");
+                        num2 = inputScanner.nextDouble();
+                        if (num2 == 0)
+                            System.out.println("Denominator must be non-zero! Please enter again.");
+                    } while (num2 == 0);
+                    result = divide(num1, num2);
                     break;
                 default:
-                    System.out.println("Closing the application");
+                    System.out.println("Quitting the program...");
                     return;
             }
-            System.out.println("Result : " + res);
+            System.out.println("Result: " + result);
         }
     }
 
-    public static double squareroot(double n) {
-        logger.info("[SQ ROOT] - " + n);
-        double res = Math.sqrt(n);
-        logger.info("[RESULT - SQ ROOT] - " + res);
-        return res;
+    public static double add(double num1, double num2) {
+        logger.info("[ADDITION] - " + num1 + " + " + num2);
+        double result = num1 + num2;
+        logger.info("[RESULT - ADDITION] - " + result);
+        return result;
     }
 
-    public static double factorial(double n) {
-        logger.info("[FACTORIAL] - " + n);
-        double res = 1L;
-        for (int i = 1; i <= n; i++) {
-            res *= i;
-        }
-        logger.info("[RESULT - FACTORIAL] - " + res);
-        return res;
+    public static double subtract(double num1, double num2) {
+        logger.info("[SUBTRACTION] - " + num1 + " - " + num2);
+        double result = num1 - num2;
+        logger.info("[RESULT - SUBTRACTION] - " + result);
+        return result;
     }
 
-    public static double log(double n) {
-        logger.info("[NATURAL LOG] - " + n);
-        double res = Math.log(n);
-        logger.info("[RESULT - NATURAL LOG] - " + res);
-        return res;
+    public static double multiply(double num1, double num2) {
+        logger.info("[MULTIPLICATION] - " + num1 + " * " + num2);
+        double result = num1 * num2;
+        logger.info("[RESULT - MULTIPLICATION] - " + result);
+        return result;
     }
 
-    public static double power(double n, double p) {
-        logger.info("[POWER - " + n + " RAISED TO] " + p);
-        double res = Math.pow(n, p);
-        logger.info("[RESULT - POWER] - " + res);
-        return res;
+    public static double divide(double num1, double num2) {
+        logger.info("[DIVISION] - " + num1 + " / " + num2);
+        double result = num1 / num2;
+        logger.info("[RESULT - DIVISION] - " + result);
+        return result;
     }
+    
 }
