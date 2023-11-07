@@ -9,9 +9,9 @@ public class Main {
     private static final Logger logger = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
-        // System.out.println("Enter a number to start the calculator program");
+        System.out.println("Press any key to begin the program!");
         Scanner inputScanner = new Scanner(System.in);
-        // inputScanner.nextLine();
+        inputScanner.nextLine();
         while (true) {
             System.out.println("Welcome to the calculator program!!");
             System.out.println("1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\n Press any other key to Quit");
