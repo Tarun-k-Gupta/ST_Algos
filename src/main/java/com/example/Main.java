@@ -1,20 +1,16 @@
 package com.example;
 
 import java.util.Scanner;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 
 public class Main {
-    private static final Logger logger = LogManager.getLogger(Main.class);
-
     public static void main(String[] args) {
         System.out.println("Press any key to begin the program!");
         Scanner inputScanner = new Scanner(System.in);
         inputScanner.nextLine();
         while (true) {
             System.out.println("You have the following choices..");
-            System.out.println("1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\n Press any other key to Quit");
+            System.out.println(
+                    "1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\n Press any other key to Quit");
             System.out.print("\nEnter your choice: ");
             int choice = inputScanner.nextInt();
             double result = 0;
@@ -61,31 +57,23 @@ public class Main {
     }
 
     public static double add(double num1, double num2) {
-        logger.info("[ADDITION] - " + num1 + " + " + num2);
         double result = num1 + num2;
-        logger.info("[RESULT - ADDITION] - " + result);
         return result;
     }
 
     public static double subtract(double num1, double num2) {
-        logger.info("[SUBTRACTION] - " + num1 + " - " + num2);
         double result = num1 - num2;
-        logger.info("[RESULT - SUBTRACTION] - " + result);
         return result;
     }
 
     public static double multiply(double num1, double num2) {
-        logger.info("[MULTIPLICATION] - " + num1 + " * " + num2);
         double result = num1 * num2;
-        logger.info("[RESULT - MULTIPLICATION] - " + result);
         return result;
     }
 
     public static double divide(double num1, double num2) {
-        logger.info("[DIVISION] - " + num1 + " / " + num2);
         double result = num1 / num2;
-        logger.info("[RESULT - DIVISION] - " + result);
         return result;
     }
-    
+
 }
