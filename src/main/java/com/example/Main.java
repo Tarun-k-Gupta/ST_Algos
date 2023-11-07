@@ -13,7 +13,7 @@ public class Main {
         Scanner inputScanner = new Scanner(System.in);
         inputScanner.nextLine();
         while (true) {
-            System.out.println("Welcome to the calculator program!!");
+            System.out.println("You have the following choices..");
             System.out.println("1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\n Press any other key to Quit");
             System.out.print("\nEnter your choice: ");
             int choice = inputScanner.nextInt();
