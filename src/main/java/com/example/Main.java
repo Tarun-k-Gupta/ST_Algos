@@ -115,7 +115,7 @@ public class Main {
         sc.nextLine();
         while (true) {
             System.out.println("**********************************CALCULATOR**********************************");
-            System.out.println("What do you want to do ?");
+            System.out.println("Welcome to the calculator program!!");
             System.out.println("1.Square root \n2.Factorial  \n3.Natural Log \n4.Power \nAny other integer to Quit");
             System.out.print("\n Enter your choice : ");
             int ch = sc.nextInt();
