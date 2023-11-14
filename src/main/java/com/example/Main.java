@@ -49,7 +49,7 @@ public class Main {
                     result = divide(num1, num2);
                     break;
                 default:
-                    System.out.println("Quitting the program...");
+                    System.out.println("Quitting the program....");
                     return;
             }
             System.out.println("Result: " + result);
